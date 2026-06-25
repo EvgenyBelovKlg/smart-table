@@ -1,8 +1,5 @@
 import "./fonts/ys-display/fonts.css";
 import "./style.css";
-
-import { data as sourceData } from "./data/dataset_1.js";
-
 import { initData } from "./data.js";
 import { processFormData } from "./lib/utils.js";
 import { initSearching } from "./components/searching.js";
@@ -78,19 +75,17 @@ const { applyPagination, updatePagination } = initPagination(
     return el;
   },
 );
-const applySearching = initSearching("search");
 const applySorting = initSorting([
   // Нам нужно передать сюда массив элементов, которые вызывают сортировку, чтобы изменять их визуальное представление
   sampleTable.header.elements.sortByDate,
   sampleTable.header.elements.sortByTotal,
 ]);
-
 const { applyFiltering, updateIndexes } = initFiltering(
   sampleTable.filter.elements,
   // передаём элементы фильтра
   // для элемента с именем searchBySeller устанавливаем массив продавцов
 );
-
+const applySearching = initSearching("search");
 const appRoot = document.querySelector("#app");
 appRoot.appendChild(sampleTable.container);
 
